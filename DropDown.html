@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Parent-Child List with Arrows</title>
+    <style type="text/css">
+        body{
+            margin: 5px;
+            padding: 5px;
+            border: 1px solid #a69f9f;
+        }
+        .arrow{
+            border: solid black;
+            border-width: 0 2px 2px 0;
+            display: inline-block;
+            padding: 3px;
+            transition: transform 0.4s;     
+            vertical-align: middle;     
+        }
+        .right {
+            transform: rotate(-45deg);
+            -webkit-transform: rotate(-45deg);
+        }
+        .left {
+            transform: rotate(135deg);
+            -webkit-transform: rotate(135deg);
+        }
+        .up {
+            transform: rotate(-135deg);
+            -webkit-transform: rotate(-135deg);
+        }
+        .down {
+            transform: rotate(45deg);
+            -webkit-transform: rotate(45deg);
+        }
+        .hover-pointer {
+            cursor: pointer;
+        }
+        .child_list {
+            display: none;
+        }
+        .text_center{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+     
+<div>
+   <div><h3 class="text_center">Core JavaScript Fundamentals</h3></div>
+
+    <ul class="hover-pointer parent_list" id="parent_list">
+        <li>Acessing Elements <i class="arrow right"></i> 
+            <ul class="child_list">
+                <li>child 1.1</li>
+            </ul>
+        </li>
+        <li>Parent 2 <i class="arrow right"></i>
+            <ul class="child_list">
+                <li>child 2.1</li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function() {
+        const parentItems = document.querySelectorAll(".parent_list > li");
+
+        parentItems.forEach(parentItem => {
+            const arrow = parentItem.querySelector(".arrow");
+            const childList = parentItem.querySelector(".child_list");
+            console.log('childList', childList)
+            parentItem.addEventListener('click', function(){
+                 
+                    if (childList.style.display === "none" || childList.style.display === "") {
+                        childList.style.display = "block";
+                        arrow.classList.remove('right');
+                        arrow.classList.add('down');
+                    } else {
+                        childList.style.display = "none";
+                        arrow.classList.remove('down');
+                        arrow.classList.add('right');
+                    }
+            
+            });
+        });
+    });
+
+    
+</script>
+
+</body>
+</html>
