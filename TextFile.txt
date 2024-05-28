@@ -1,1 +1,4 @@
 # This is My First File
+git init
+git add .
+git commit -m 'Exercise'

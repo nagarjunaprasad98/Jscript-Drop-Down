@@ -108,6 +108,13 @@ function mergerdArray(arr1, arr2) {
 }
 console.log("mergerd Two sorted Arrays ", mergerdArray(arr1, arr2));
 // Write a function to find the union of two arrays.
+
+function unionOfTwoArrays(arr1, arr2){
+  const unionSet = new Set([...arr1, ...arr2]);
+
+  return Array.from(unionSet)
+}
+console.log('Union of two arrays : ', unionOfTwoArrays(arr1, arr2))
 // Write a function to check if an array is a subset of another array.
 // Write a function to find the second largest element in an array.
 // Write a function to find the elements that appear only once in an array.
